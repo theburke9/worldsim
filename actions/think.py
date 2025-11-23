@@ -10,7 +10,7 @@ class ThinkAction(Action):
         super().__init__(startup_tick)
         print(f"[{tick_to_time(startup_tick)}] 💭 {agent_name} starts to think")
 
-    def update(self, brain: BaseApi, current_tick: int):
+    def update(self, current_tick: int):
         if not self.isRunning():
             return
         
@@ -18,7 +18,7 @@ class ThinkAction(Action):
             self.remaining_ticks -= 1
             return
         
-        brain_response = brain.generate("")
+        brain_response = self.agent.think("")
 
         if brain_response is None:
             pass
