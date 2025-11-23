@@ -42,8 +42,11 @@ class Agent:
         return self.brain.generate(prompt)
     
     def getState(self, prompt_path: str, current_tick: int) -> str:
+        """
+        TODO
+        """
         from utils.time import tick_to_time
-        return load_prompt(prompt_path, self.name, self.age, tick_to_time(current_tick), ";".join(self.memories))
+        return load_prompt(prompt_path, self.name, self.age, self.health, self.energy, self.hunger_level,  tick_to_time(current_tick), ";".join(self.memories))
 
     def isBusy(self) -> bool:
         if self.current_action is None or self.current_action.isDone():
