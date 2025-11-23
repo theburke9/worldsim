@@ -20,5 +20,5 @@ class BaseApi(ABC):
         self.api_key = api_key
 
     @abstractmethod
-    def generate(self, prompt: str) -> str:
+    def generate(self, prompt: str) -> str | None:
         pass

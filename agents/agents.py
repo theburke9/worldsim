@@ -8,10 +8,12 @@ class Agent:
     plan: list[object]
     brain: BaseApi
     current_action: Action | None
+    initial_position: tuple[int, int]
 
     # constructor
-    def __init__(self, name: str, age: int, brain: BaseApi, initial_memory: list[str] = [], initial_plan: list[Action] = []) -> None:
+    def __init__(self, name: str, age: int, brain: BaseApi, initial_position: tuple[int, int], initial_memory: list[str] = [], initial_plan: list[Action] = []) -> None:
         assert(age > 0)
+        assert(isinstance(initial_position, tuple))
         assert(isinstance(initial_memory, list))
         assert(isinstance(initial_plan, list))
         assert(isinstance(brain, BaseApi))
@@ -21,6 +23,7 @@ class Agent:
         self.plan = initial_plan
         self.brain = brain
         self.current_action = None
+        self.initial_position = initial_position
 
     # state
     def update(self, current_tick: int) -> None:
