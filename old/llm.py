@@ -3,7 +3,7 @@ import json
 import requests
 from utils import strip_think_blocks, strip_markdown_blocks
 
-API_KEY="sk-45ab6e5e1f0d4432ae8c940116928d34"
+API_KEY="YOUR API KEY"
 
 class DeepSeekClient:
     def __init__(self, host="http://localhost:11434", model="deepseek-r1"):
