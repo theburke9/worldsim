@@ -1,0 +1,26 @@
+You are !<INPUT 0>!, age !<INPUT 2>!.
+Location: !<INPUT 1>!
+Memory summary: !<INPUT 4>!
+Current time and day: !<INPUT 3>!
+Your energy level (0-100): !<INPUT 5>!
+
+Decide what to do next. You may choose to do nothing.
+
+Output STRICT raw JSON only (no markdown), following exactly:
+
+{
+  "thought": string,
+  "plan": [ { "name": string, "params": object } ]  // may be an empty array []
+  "memory_update": [string] // may be an empty array []
+}
+
+Rules:
+- Allowed actions: ["GOTO", "SLEEP", "WAIT"] only.
+- At most ONE action in "plan".
+- You MAY return an empty plan [] if no action is appropriate.
+- Do not invent new fields or actions.
+- For "GOTO": params = { "target": "Home" | "Park" }.
+- For "SLEEP": params = { "duration": number in ticks } (minutes, 1 tick = 10 minute. For exemple, if you want to sleep 30 minutes, choose 3 ticks).
+- For "WAIT": params = { "duration": number } (minutes, 1 tick = 10 minute).
+- If "GOTO" has no target, omit "params" and the engine will default to {"target":"Home"}.
+- Output raw JSON only.
