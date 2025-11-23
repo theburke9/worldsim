@@ -1,7 +1,7 @@
 import numpy as np
 from world.zone import Zone
 from llm.api import BaseApi
-from agents.agents import Agent
+from agent.agent import Agent
 
 class World:
     """
